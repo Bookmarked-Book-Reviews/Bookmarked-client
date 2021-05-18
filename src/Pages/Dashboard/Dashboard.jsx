@@ -4,7 +4,7 @@ import DashboardAppBar from '../../Components/DashboardAppBar/DashboardAppBar';
 function Dashboard() {
     return (
         <>
-         <Dashboard/>
+         <DashboardAppBar/>
         </>
     )
 }

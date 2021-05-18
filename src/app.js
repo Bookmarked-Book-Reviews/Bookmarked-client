@@ -5,6 +5,7 @@ import Login from './Pages/Login/Login.jsx';
 import Signup from './Pages/Signup/Signup.jsx';
 import About from './Pages/About/About.jsx';
 import Error from './Pages/Error/Error.jsx'
+import Dashboard from './Pages/Dashboard/Dashboard.jsx';
 
 export default function App() {
     return (
@@ -14,6 +15,7 @@ export default function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
                 <Route path="/about" component={About} />
+                <Route path="/dashboard" component={Dashboard} />
                 <Route component={Error} />
             </Switch>
         </div>
