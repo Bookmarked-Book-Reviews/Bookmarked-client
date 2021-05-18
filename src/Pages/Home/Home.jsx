@@ -1,8 +1,8 @@
-import './Home.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Navbar from '../../Components/Navbar/Navbar';
+import Footer from '../../Components/Footer/Footer';
 import Book from '../../Assets/images/BookLanding.jpg'
 
 
@@ -25,7 +25,7 @@ function Home() {
      </figure>
      </Container>
 
-
+    <Footer/>
     </div>
   );
 }
