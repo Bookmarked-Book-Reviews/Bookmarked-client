@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-function AddBook() {
+function AddBookForm() {
     return (
         <div>
-            <form className={classes.root} noValidate autoComplete="off">
+            <form noValidate autoComplete="off">
 
                 <TextField required  id="standard-basic" label="Title" />
                 <TextField required  id="standard-basic" label="ISBN" />
@@ -13,11 +15,11 @@ function AddBook() {
                 <TextField required  id="standard-number" label="Year Of Publication" />
                 <TextField required  id="standard-basic" label="Genre"  helperText="Novel,Essay,Fiction etc."/>
                 <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" />
-                    
+                <Button variant="contained" component="label" >Upload Cover Image<input type="file" hidden/></Button>
 
             </form>
         </div>
     )
 }
 
-export default AddBook
+export default AddBookForm

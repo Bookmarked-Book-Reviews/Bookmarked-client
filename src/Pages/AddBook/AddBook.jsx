@@ -1,4 +1,5 @@
 import React from 'react'
+import AddBookForm from '../../Components/AddBookForm/AddBookForm';
 import DashboardAppBar from '../../Components/DashboardAppBar/DashboardAppBar';
 
 function AddBook() {
@@ -6,7 +7,7 @@ function AddBook() {
         <div>
               <DashboardAppBar/>
               <main>
-                  
+                  <AddBookForm/>
               </main>
         </div>
     )
