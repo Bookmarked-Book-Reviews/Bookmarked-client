@@ -1,9 +1,13 @@
 import React from 'react'
+import DashboardAppBar from '../../Components/DashboardAppBar/DashboardAppBar';
 
 function AddBook() {
     return (
         <div>
-            <h1>Create Book</h1>
+              <DashboardAppBar/>
+              <main>
+                  
+              </main>
         </div>
     )
 }
