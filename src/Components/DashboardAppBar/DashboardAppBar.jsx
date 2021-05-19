@@ -20,6 +20,7 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const drawerWidth = 240;
 
@@ -195,16 +196,27 @@ export default function DashboardAppBar() {
         </div>
         <Divider />
         <List>
-          {['Dashboard','MyBooks'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <DashboardIcon /> : <LibraryBooksIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          
+            <ListItem >
+              <ListItemIcon><DashboardIcon/></ListItemIcon>
+              <ListItemText primary="Dashboard"/>
             </ListItem>
-          ))}
+
+            <ListItem >
+              <ListItemIcon><AddCircleOutlineIcon/></ListItemIcon>
+              <ListItemText primary="Add Book"/>
+            </ListItem>
+          
+            <ListItem >
+              <ListItemIcon><LibraryBooksIcon/></ListItemIcon>
+              <ListItemText primary="My Books"/>
+            </ListItem>
+          
+          
         </List>
         <Divider />
         <List>
-          {['Logout'].map((text, index) => (
+          {['Logout'].map((text) => (
             <ListItem button key={text}>
               <ListItemIcon><ExitToAppIcon/></ListItemIcon>
               <ListItemText primary={text} />
