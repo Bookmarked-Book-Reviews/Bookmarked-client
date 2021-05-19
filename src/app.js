@@ -6,6 +6,8 @@ import Signup from './Pages/Signup/Signup.jsx';
 import About from './Pages/About/About.jsx';
 import Error from './Pages/Error/Error.jsx'
 import Dashboard from './Pages/Dashboard/Dashboard.jsx';
+import AddBook from './Pages/AddBook/AddBook.jsx';
+
 
 export default function App() {
     return (
@@ -16,6 +18,7 @@ export default function App() {
                 <Route path="/signup" component={Signup} />
                 <Route path="/about" component={About} />
                 <Route path="/dashboard" component={Dashboard} />
+                <Route path="/create" component={AddBook} />
                 <Route component={Error} />
             </Switch>
         </div>
