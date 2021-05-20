@@ -20,6 +20,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import InputBase from '@material-ui/core/InputBase';
 import {useStyles, useTheme} from './DashboardAppStyling';
+import {Link} from 'react-router-dom';
 
 
 
@@ -98,15 +99,19 @@ export default function DashboardAppBar() {
         <Divider />
         <List>
           
+        <Link to="/dashboard">
             <ListItem >
               <ListItemIcon><DashboardIcon/></ListItemIcon>
               <ListItemText primary="Dashboard"/>
             </ListItem>
-
+            </Link>
+             
+            <Link to="/create">
             <ListItem >
               <ListItemIcon><AddCircleOutlineIcon/></ListItemIcon>
               <ListItemText primary="Add Book"/>
             </ListItem>
+            </Link>
         </List>
         <Divider />
         <List>

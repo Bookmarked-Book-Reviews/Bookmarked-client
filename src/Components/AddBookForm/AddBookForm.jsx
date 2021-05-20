@@ -7,17 +7,18 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Grid from '@material-ui/core/Grid';
 
 function AddBookForm() {
 
-    const [title, setTitle] = useState('Title');
-    const [isbn, setIsbn] = useState('ISBN');
-    const [author, setAuthor] = useState('Author');
-    const [language, setLanguage] = useState('Language');
-    const [description, setDescription] = useState('Descrption');
-    const [year, setYear] = useState('Year Of Publication');
-    const [genre, setGenre] = useState('Novel');
-    const [link, setLink] = useState('Link to Purchase');
+    const [title, setTitle] = useState('');
+    const [isbn, setIsbn] = useState('');
+    const [author, setAuthor] = useState('');
+    const [language, setLanguage] = useState('');
+    const [description, setDescription] = useState('');
+    const [year, setYear] = useState('');
+    const [genre, setGenre] = useState('');
+    const [link, setLink] = useState('');
 
 
 
@@ -59,30 +60,37 @@ function AddBookForm() {
   
     return (
         <div>
-            <form noValidate autoComplete="off">
-  
-                <TextField required  id="standard-basic" label="Title" value={title} onChange={titleChange} /><br/>
-                <TextField required  id="standard-basic" label="ISBN" value={isbn} onChange={isbnChange} /><br/>
-                <TextField required  id="standard-basic" label="Author" value={author} onChange={authorChange} /><br/>
-                <TextField required  id="standard-basic" label="Language" value={language} onChange={languageChange} /><br/>
-                <TextField required  id="standard-multiline-flexible" value={description} label="Descrption" onChange={descriptionChange} /><br/>
-                <TextField required  id="standard-number" label="Year Of Publication" value={year} onChange={yearChange} /><br/>
-               
+           <Grid container justify="center" alignItems="center">
+              
+                <div>
+                <Grid item>
+                <form noValidate autoComplete="off">
+    
+                    <TextField required  id="standard-basic" label="Title" value={title} onChange={titleChange} /><br/>
+                    <TextField required  id="standard-basic" label="ISBN" value={isbn} onChange={isbnChange} /><br/>
+                    <TextField required  id="standard-basic" label="Author" value={author} onChange={authorChange} /><br/>
+                    <TextField required  id="standard-basic" label="Language" value={language} onChange={languageChange} /><br/>
+                    <TextField required  id="standard-multiline-flexible" value={description} label="Descrption" onChange={descriptionChange} /><br/>
+                    <TextField required  id="standard-number" label="Year Of Publication" value={year} onChange={yearChange} /><br/>
+                
 
-                <FormControl component="fieldset">
-                    <FormLabel component="legend">Genre</FormLabel>
-                    <RadioGroup aria-label="Genre" name="genre" value={genre}  onChange={genreChange}>
-                        <FormControlLabel value="Novel" control={<Radio />} label="Novel" />
-                        <FormControlLabel value="Essay" control={<Radio />} label="Essay" />
-                        <FormControlLabel value="Fiction" control={<Radio />} label="Fiction" />
-                    </RadioGroup>
-                 </FormControl>
+                    <FormControl component="fieldset">
+                        <FormLabel component="legend">Genre</FormLabel>
+                        <RadioGroup aria-label="Genre" name="genre" value={genre}  onChange={genreChange}>
+                            <FormControlLabel value="Novel" control={<Radio />} label="Novel" />
+                            <FormControlLabel value="Essay" control={<Radio />} label="Essay" />
+                            <FormControlLabel value="Fiction" control={<Radio />} label="Fiction" />
+                        </RadioGroup>
+                    </FormControl><br/>
 
 
-                <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" value={link} onChange={linkChange} /><br/>
-                <Button required variant="contained" component="label" startIcon={<CloudUploadIcon />} >Upload Cover Image<input type="file" hidden/></Button><br/>
-                <Button variant="contained" type color="secondary"> Submit </Button>
-            </form>
+                    <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" value={link} onChange={linkChange} /><br/>
+                    <Button required variant="contained" component="label" startIcon={<CloudUploadIcon />} >Upload Cover Image<input type="file" hidden/></Button><br/>
+                    <Button variant="contained" type color="secondary"> Submit </Button>
+                </form>
+                </Grid>
+                </div>   
+            </Grid>
         </div>
     )
 }
