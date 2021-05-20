@@ -11,7 +11,7 @@ function Home() {
     <div style={{backgroundColor:'white'}}>
     <CssBaseline/>
      <Navbar/>
-     <Container>
+     <Container width="100vh">
      <Container maxWidth="sm">
       <Typography variant='h3'align='left'color='textPrimary'>
        THE BEST WAY TO DISCOVER AND SHARE NEW BOOKS
