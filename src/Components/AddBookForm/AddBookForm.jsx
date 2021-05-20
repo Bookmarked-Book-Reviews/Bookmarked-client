@@ -7,15 +7,15 @@ function AddBookForm() {
         <div>
             <form noValidate autoComplete="off">
 
-                <TextField required  id="standard-basic" label="Title" />
-                <TextField required  id="standard-basic" label="ISBN" />
-                <TextField required  id="standard-basic" label="Author" />
-                <TextField required  id="standard-basic" label="Language" />
-                <TextField required  id="standard-basic" label="Descrption" />
+                <TextField required  id="standard-basic" label="Title" /><br/>
+                <TextField required  id="standard-basic" label="ISBN" /><br/>
+                <TextField required  id="standard-basic" label="Author" /><br/>
+                <TextField required  id="standard-basic" label="Language" /><br/>
+                <TextField required  id="standard-basic" label="Descrption" /><br/>
                 <TextField required  id="standard-number" label="Year Of Publication" />
-                <TextField required  id="standard-basic" label="Genre"  helperText="Novel,Essay,Fiction etc."/>
-                <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" />
-                <Button variant="contained" component="label" >Upload Cover Image<input type="file" hidden/></Button>
+                <TextField required  id="standard-basic" label="Genre"  helperText="Novel,Essay,Fiction etc."/><br/>
+                <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" /><br/>
+                <Button variant="contained" component="label" >Upload Cover Image<input type="file" hidden/></Button><br/>
 
             </form>
         </div>
