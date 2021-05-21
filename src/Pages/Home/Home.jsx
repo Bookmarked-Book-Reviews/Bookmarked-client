@@ -12,8 +12,8 @@ function Home() {
     <CssBaseline/>
      <Navbar/>
      <Container width="100%">
-        <Grid container spacing={3} justify="flex-start"  direction="row">
-          <Grid item sm={6} >
+        <Grid container spacing={3} margin justify="flex-start"  direction="row">
+          <Grid item xs={12} sm={6} >
                 <Typography variant='h3'align='left'color='textPrimary'>
                 THE BEST WAY TO DISCOVER AND SHARE NEW BOOKS
                 </Typography>
@@ -22,7 +22,7 @@ function Home() {
                 </Typography>
             </Grid>
 
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={0}>
               <figure>
                 <img src={Book} alt="Books" width="50%" height="50%"/>
               </figure>
