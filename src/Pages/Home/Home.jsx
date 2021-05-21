@@ -8,12 +8,12 @@ import Book from '../../Assets/images/BookLanding.jpg'
 
 function Home() {
   return (
-    <div style={{backgroundColor:'white'}}>
+    <>
     <CssBaseline/>
      <Navbar/>
-     <Container width="100vh">
-        <Grid container spacing="2" justify="space-between" align="center">
-          <Grid item >
+     <Container width="100%">
+        <Grid container spacing={3} justify="flex-start"  direction="row">
+          <Grid item sm={6} >
             <Container maxWidth="sm">
                 <Typography variant='h3'align='left'color='textPrimary'>
                 THE BEST WAY TO DISCOVER AND SHARE NEW BOOKS
@@ -24,16 +24,15 @@ function Home() {
             </Container>
             </Grid>
 
-            <Grid item >
+            <Grid item sm={6}>
               <figure>
-                <img src={Book} alt="Books"width='30%' height='30%'/>
+                <img src={Book} alt="Books" width="50%" height="50%"/>
               </figure>
             </Grid>
         </Grid>
      </Container>
 
-    
-    </div>
+    </>
   );
 }
 

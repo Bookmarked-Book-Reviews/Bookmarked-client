@@ -17,9 +17,9 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             Bookmarked
           </Typography>
-        <Link to="/">  <Button color="inherit">Home</Button></Link>
-        <Link to="/signup"> <Button color="inherit">SignUp</Button></Link>
-        <Link to="/login"><Button color="inherit">Login</Button></Link>
+        <Link to="/" style={{textDecoration:"none" ,color:"black"}}>  <Button color="inherit">Home</Button></Link>
+        <Link to="/signup" style={{textDecoration:"none" ,color:"black"}}> <Button color="inherit">SignUp</Button></Link>
+        <Link to="/login" style={{textDecoration:"none" ,color:"black"}}><Button color="inherit">Login</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
