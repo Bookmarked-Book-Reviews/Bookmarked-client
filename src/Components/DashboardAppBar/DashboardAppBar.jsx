@@ -99,14 +99,14 @@ export default function DashboardAppBar() {
         <Divider />
         <List>
           
-        <Link to="/dashboard">
+        <Link to="/dashboard" style={{textDecoration:"none" ,color:"black"}}>
             <ListItem >
               <ListItemIcon><DashboardIcon/></ListItemIcon>
               <ListItemText primary="Dashboard"/>
             </ListItem>
             </Link>
              
-            <Link to="/create">
+            <Link to="/create" style={{textDecoration:"none" ,color:"black"}}>
             <ListItem >
               <ListItemIcon><AddCircleOutlineIcon/></ListItemIcon>
               <ListItemText primary="Add Book"/>
