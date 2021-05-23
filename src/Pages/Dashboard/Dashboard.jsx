@@ -15,6 +15,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from 'react-router-dom';
 import SearchBar from '../../Components/SearchBar/SearchBar'
+import BookCard from '../../Components/BookCard/BookCard';
 
 
 const drawerWidth = 240;
@@ -93,6 +94,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
+        <BookCard/>
         
       </main>
     </div>
