@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import PersonIcon from '@material-ui/icons/Person';
 import Button from '@material-ui/core/Button';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import './BookCard.css';
 
@@ -63,16 +64,30 @@ export default function BookCard() {
             ISBN : ISBN
             </Typography>
           </div>
+        <div className="review">
+            <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            endIcon={<RateReviewIcon/>}
+        >
+            Reviews
+        </Button>
 
         <Button
-        variant="contained"
-        color="primary"
-        className={classes.button}
-        endIcon={<RateReviewIcon/>}
-      >
-        Reviews
-      </Button>
+            variant="contained"
+            color="default"
+            className={classes.button}
+            endIcon={<LibraryAddIcon/>}
+        >
+            Add Review
+        </Button>
+      </div>
       </CardContent>
+
+
+
+
       <CardActions disableSpacing>
         
       </CardActions>
