@@ -1,0 +1,35 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+
+}
+
+h1{
+    font-family: ""Roboto", "Helvetica", "Arial", sans-serif";
+    font-weight: 400;
+    font-size:3rem;
+    line-height: 1.167;
+    letter-spacing: 0em;
+}
+
+p{
+    font-family: ""Roboto", "Helvetica", "Arial", sans-serif";
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.00938em;
+    color: #616161;
+}
+
+.main-text{
+    width: 50%;
+}
+
+.picture img{
+    height:300px;
+    width: 300px;
+}
