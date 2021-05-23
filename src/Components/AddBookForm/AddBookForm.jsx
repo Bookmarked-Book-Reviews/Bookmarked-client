@@ -8,8 +8,28 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+    
+
+
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '25ch',
+        flexGrow:1,
+      },
+    },
+  }));
+
 
 function AddBookForm() {
+
+    const classes = useStyles();
 
     const [title, setTitle] = useState('');
     const [isbn, setIsbn] = useState('');
@@ -63,20 +83,21 @@ function AddBookForm() {
            <Grid container justify="center" alignItems="center">
               
                 <div>
-                <Grid item>
-                <form noValidate autoComplete="off">
-    
-                    <TextField required  id="standard-basic" label="Title" value={title} onChange={titleChange} /><br/>
-                    <TextField required  id="standard-basic" label="ISBN" value={isbn} onChange={isbnChange} /><br/>
-                    <TextField required  id="standard-basic" label="Author" value={author} onChange={authorChange} /><br/>
-                    <TextField required  id="standard-basic" label="Language" value={language} onChange={languageChange} /><br/>
-                    <TextField required  id="standard-multiline-flexible" value={description} label="Descrption" onChange={descriptionChange} /><br/>
-                    <TextField required  id="standard-number" label="Year Of Publication" value={year} onChange={yearChange} /><br/>
+                <Grid item xs={12} >
+                <form className={classes.root} noValidate autoComplete="off">
+                    
+                
+                    <TextField required  id="standard-basic" label="Title" value={title} onChange={titleChange} variant="outlined"/><br/>
+                    <TextField required  id="standard-basic" label="ISBN" value={isbn} onChange={isbnChange} variant="outlined" /><br/>
+                    <TextField required  id="standard-basic" label="Author" value={author} onChange={authorChange} variant="outlined"/><br/>
+                    <TextField required  id="standard-basic" label="Language" value={language} onChange={languageChange} variant="outlined" /><br/>
+                    <TextField required  id="standard-multiline-flexible" value={description} label="Descrption" onChange={descriptionChange} multiline variant="outlined" /><br/>
+                    <TextField required  id="standard-number" label="Year Of Publication" value={year} onChange={yearChange}variant="outlined" type="number" /><br/>
                 
 
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Genre</FormLabel>
-                        <RadioGroup aria-label="Genre" name="genre" value={genre}  onChange={genreChange}>
+                        <RadioGroup row={true} aria-label="Genre" name="genre" value={genre}  onChange={genreChange}>
                             <FormControlLabel value="Novel" control={<Radio />} label="Novel" />
                             <FormControlLabel value="Essay" control={<Radio />} label="Essay" />
                             <FormControlLabel value="Fiction" control={<Radio />} label="Fiction" />
@@ -84,7 +105,7 @@ function AddBookForm() {
                     </FormControl><br/>
 
 
-                    <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" value={link} onChange={linkChange} /><br/>
+                    <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" value={link} onChange={linkChange} variant="outlined"/><br/>
                     <Button required variant="contained" component="label" startIcon={<CloudUploadIcon />} >Upload Cover Image<input type="file" hidden/></Button><br/>
                     <Button variant="contained" type color="secondary"> Submit </Button>
                 </form>

@@ -50,7 +50,7 @@ export default function Dashboard() {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
-            Clipped drawer
+            Bookmarked
           </Typography>
         </Toolbar>
       </AppBar>
