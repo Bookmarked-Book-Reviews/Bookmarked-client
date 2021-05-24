@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { NavLink, useHistory} from "react-router-dom";
+
 
 function Copyright() {
   return (
@@ -47,6 +49,37 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginForm() {
   const classes = useStyles();
+
+  const Login = () => {
+
+          const history = useHistory();
+          const [email, setEmail] = useState('');
+          const [password, setPassword] = useState('');
+
+          const loginUser = async (e) => {
+              e.preventDefault();
+
+              const res = await fetch('/login', {
+                method="POST",
+                headers={
+                  "Content-Type" : "application/json"
+                }, 
+                body:JSON.stringify({
+                  email,
+                  password
+                }) 
+          });
+          const data = res.json();
+
+          if(res.status === 400 || !data) {
+            window.alert("Invalid Credentials..!!");
+          } else {
+            window.alert("Login Successfull");
+            history.push("/books");
+
+          }
+    } 
+  }
 
   return (
     <Container component="main" maxWidth="xs">

@@ -20,6 +20,7 @@ export default function Navbar() {
         <Link to="/" style={{textDecoration:"none" ,color:"black"}}>  <Button color="inherit">Home</Button></Link>
         <Link to="/signup" style={{textDecoration:"none" ,color:"black"}}> <Button color="inherit">SignUp</Button></Link>
         <Link to="/login" style={{textDecoration:"none" ,color:"black"}}><Button color="inherit">Login</Button></Link>
+        <Link to="/logout" style={{textDecoration:"none" ,color:"black"}}><Button color="inherit">Logout</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
