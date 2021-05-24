@@ -1,3 +1,4 @@
+import React ,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,7 +48,19 @@ function Copyright() {
   
   export default function SignUpForm() {
     const classes = useStyles();
-  
+
+    const [user,setUser]=useState({
+      name:"", email:"", password:"",
+    });
+
+    let name,value;
+    const handleInputs=(e)=>{
+        name=e.target.name;
+        value=e.target.value;
+
+        setUser({...user,[name]:value});
+    }
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -60,27 +73,18 @@ function Copyright() {
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
-                  autoComplete="fname"
-                  name="firstName"
+                  autoComplete="off"
+                  name="Name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="Name"
+                  value={user.name}
+                  onChange={handleInputs}
+                  label="Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -90,8 +94,10 @@ function Copyright() {
                   fullWidth
                   id="email"
                   label="Email Address"
+                  value={user.email}
+                  onChange={handleInputs}
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -101,9 +107,11 @@ function Copyright() {
                   fullWidth
                   name="password"
                   label="Password"
+                  value={user.password}
+                  onChange={handleInputs}
                   type="password"
                   id="password"
-                  autoComplete="current-password"
+                  autoComplete="off"
                 />
               </Grid>
             </Grid>
