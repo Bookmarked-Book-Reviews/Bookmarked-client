@@ -3,7 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink ,useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -48,6 +48,7 @@ function Copyright() {
   
   export default function SignUpForm() {
     const classes = useStyles();
+    const history =useHistory();
 
     const [user,setUser]=useState({
       name:"", email:"", password:"",
@@ -59,6 +60,36 @@ function Copyright() {
         value=e.target.value;
 
         setUser({...user,[name]:value});
+    }
+
+    const postData=async(e)=>{
+      e.preventDefault();
+      
+      const {name,email,password}=user;
+      const res=await fetch("/signup",{
+           
+        method:"POST",
+        headers:{
+          "content-Type" : "application/json"
+        },
+        body : JSON.stringify({
+          name,email,password
+        })
+
+
+      });
+      
+      const data= await res.json();
+
+      if(res.status===422 || !data)
+      {
+        window.alert("invalid registration");
+      }
+      else{
+        window.alert("Registration Successful");
+      }
+
+      history.push("/login")
     }
 
     return (
@@ -76,11 +107,11 @@ function Copyright() {
               <Grid item xs={12} >
                 <TextField
                   autoComplete="off"
-                  name="Name"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="Name"
+                  id="name"
                   value={user.name}
                   onChange={handleInputs}
                   label="Name"
@@ -121,6 +152,7 @@ function Copyright() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={postData}
             >
               Sign Up
             </Button>
