@@ -1,8 +1,9 @@
+import React ,{useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink ,useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -47,7 +48,50 @@ function Copyright() {
   
   export default function SignUpForm() {
     const classes = useStyles();
-  
+    const history =useHistory();
+
+    const [user,setUser]=useState({
+      name:"", email:"", password:"",
+    });
+
+    let name,value;
+    const handleInputs=(e)=>{
+        name=e.target.name;
+        value=e.target.value;
+
+        setUser({...user,[name]:value});
+    }
+
+    const postData=async(e)=>{
+      e.preventDefault();
+      
+      const {name,email,password}=user;
+      const res=await fetch("/signup",{
+           
+        method:"POST",
+        headers:{
+          "content-Type" : "application/json"
+        },
+        body : JSON.stringify({
+          name,email,password
+        })
+
+
+      });
+      
+      const data= await res.json();
+
+      if(res.status===422 || !data)
+      {
+        window.alert("invalid registration");
+      }
+      else{
+        window.alert("Registration Successful");
+      }
+
+      history.push("/login")
+    }
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -60,27 +104,18 @@ function Copyright() {
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
-                  autoComplete="fname"
-                  name="firstName"
+                  autoComplete="off"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  value={user.name}
+                  onChange={handleInputs}
+                  label="Name"
                   autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="lname"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -90,8 +125,10 @@ function Copyright() {
                   fullWidth
                   id="email"
                   label="Email Address"
+                  value={user.email}
+                  onChange={handleInputs}
                   name="email"
-                  autoComplete="email"
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -101,9 +138,11 @@ function Copyright() {
                   fullWidth
                   name="password"
                   label="Password"
+                  value={user.password}
+                  onChange={handleInputs}
                   type="password"
                   id="password"
-                  autoComplete="current-password"
+                  autoComplete="off"
                 />
               </Grid>
             </Grid>
@@ -113,6 +152,7 @@ function Copyright() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={postData}
             >
               Sign Up
             </Button>
