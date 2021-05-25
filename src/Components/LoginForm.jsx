@@ -51,13 +51,12 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginForm() {
   const classes = useStyles();
 
-  const Login = () => {
-
-          const {state, dispatch} = useContext(UserContext);
+  
+          const {dispatch} = useContext(UserContext);
 
           const history = useHistory();
-          const {email} = useState('');
-          const {password} = useState('');
+          const [email, setEmail] = useState('');
+          const [password, setPassword] = useState('');
 
           const loginUser = async (e) => {
               e.preventDefault();
@@ -82,7 +81,7 @@ export default function LoginForm() {
             history.push("/dashboard");
 
           }
-    } 
+    
   }
 
   return (
@@ -103,7 +102,7 @@ export default function LoginForm() {
             fullWidth
             id="email"
             value={email}
-            onChange={(e) => _setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -119,7 +118,7 @@ export default function LoginForm() {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => _setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             autoComplete="current-password"
           />
           <Button
