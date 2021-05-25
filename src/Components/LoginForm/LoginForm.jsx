@@ -60,8 +60,8 @@ export default function LoginForm() {
               e.preventDefault();
 
               const res = await fetch('/login', {
-                method="POST",
-                headers={
+                method:"POST",
+                headers:{
                   "Content-Type" : "application/json"
                 }, 
                 body:JSON.stringify({
@@ -75,7 +75,7 @@ export default function LoginForm() {
             window.alert("Invalid Credentials..!!");
           } else {
             window.alert("Login Successfull");
-            history.push("/books");
+            history.push("/dashboard");
 
           }
     } 
