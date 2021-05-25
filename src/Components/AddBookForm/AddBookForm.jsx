@@ -6,10 +6,11 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-    
+import {useHistory } from 'react-router-dom';
+import axios from 'axios';   
+
 
 
 
@@ -30,50 +31,35 @@ const useStyles = makeStyles((theme) => ({
 function AddBookForm() {
 
     const classes = useStyles();
-
-    const [title, setTitle] = useState('');
-    const [isbn, setIsbn] = useState('');
-    const [author, setAuthor] = useState('');
-    const [language, setLanguage] = useState('');
-    const [description, setDescription] = useState('');
-    const [year, setYear] = useState('');
-    const [genre, setGenre] = useState('');
-    const [link, setLink] = useState('');
+    const history =useHistory();
 
 
+    const [book,setBook]=useState({
+        title:"", isbn:"", author:"", language:"", description:"",year:"",genre:"",
+      });
+  
+      let name,value;
+      const handleBook=(e)=>{
+          name=e.target.name;
+          value=e.target.value;
+  
+          setBook({...book,[name]:value});
+      }
+  
+    
+    const postBook=(e)=>{
+        
+        e.preventDefault();
+        const {title,isbn,author,language,description,year,genre}=book;
+        
+        axios.post(`http://localhost:5000/create`,book,).then(
+            (response)=>{
+                console.log(response)
+            }
+        )
 
-
-    const titleChange = (e) => {
-                        setTitle(e.target.value);
-                            };
-
-    const isbnChange = (e) => {
-                        setIsbn(e.target.value);   
-                            };
-
-    const authorChange = (e) => {
-                         setAuthor(e.target.value);       
-                            };
-
-    const languageChange = (e) => {
-                    setLanguage(e.target.value);
-                        };
-
-    const descriptionChange = (e) => {
-                    setDescription(e.target.value);
-                        };
-    const yearChange = (e) => {
-                    setYear(e.target.value);
-                        };
-
-    const genreChange = (e) => {
-                    setGenre(e.target.value);
-                        };
-
-    const linkChange = (e) => {
-                         setLink(e.target.value);
-                         };
-
+        history.push("/dashboard")
+    }
 
 
   
@@ -87,27 +73,24 @@ function AddBookForm() {
                 <form className={classes.root} noValidate autoComplete="off">
                     
                 
-                    <TextField required  id="standard-basic" label="Title" value={title} onChange={titleChange} variant="outlined"/><br/>
-                    <TextField required  id="standard-basic" label="ISBN" value={isbn} onChange={isbnChange} variant="outlined" /><br/>
-                    <TextField required  id="standard-basic" label="Author" value={author} onChange={authorChange} variant="outlined"/><br/>
-                    <TextField required  id="standard-basic" label="Language" value={language} onChange={languageChange} variant="outlined" /><br/>
-                    <TextField required  id="standard-multiline-flexible" value={description} label="Descrption" onChange={descriptionChange} multiline variant="outlined" /><br/>
-                    <TextField required  id="standard-number" label="Year Of Publication" value={year} onChange={yearChange}variant="outlined" type="number" /><br/>
+                    <TextField required  name="title" id="standard-basic" label="Title" value={book.title} onChange={handleBook} variant="outlined"/><br/>
+                    <TextField required  name="isbn" id="standard-basic" label="ISBN" value={book.isbn} onChange={handleBook} variant="outlined" /><br/>
+                    <TextField required  name="author" id="standard-basic" label="Author" value={book.author} onChange={handleBook} variant="outlined"/><br/>
+                    <TextField required  name="language" id="standard-basic" label="Language" value={book.language} onChange={handleBook} variant="outlined" /><br/>
+                    <TextField required  name="description" id="standard-multiline-flexible" value={book.description} label="Descrption" onChange={handleBook} multiline variant="outlined" /><br/>
+                    <TextField required  name="year" id="standard-number" label="Year Of Publication" value={book.year} onChange={handleBook}variant="outlined" type="number" /><br/>
                 
 
                     <FormControl component="fieldset">
                         <FormLabel component="legend">Genre</FormLabel>
-                        <RadioGroup row={true} aria-label="Genre" name="genre" value={genre}  onChange={genreChange}>
+                        <RadioGroup row={true} aria-label="Genre" name="genre" value={book.genre}  onChange={handleBook}>
                             <FormControlLabel value="Novel" control={<Radio />} label="Novel" />
                             <FormControlLabel value="Essay" control={<Radio />} label="Essay" />
                             <FormControlLabel value="Fiction" control={<Radio />} label="Fiction" />
                         </RadioGroup>
                     </FormControl><br/>
 
-
-                    <TextField required  id="standard-basic" label="Link to Purchase" helperText="Amazon or Flipkart link" value={link} onChange={linkChange} variant="outlined"/><br/>
-                    <Button required variant="contained" component="label" startIcon={<CloudUploadIcon />} >Upload Cover Image<input type="file" hidden/></Button><br/>
-                    <Button variant="contained" type color="secondary"> Submit </Button>
+                    <Button variant="contained" type color="secondary" onClick={postBook}> Submit </Button>
                 </form>
                 </Grid>
                 </div>   
