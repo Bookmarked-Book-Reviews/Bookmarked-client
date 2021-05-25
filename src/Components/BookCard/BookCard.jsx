@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import './BookCard.css';
+import Book from '../../Assets/images/bookcard.png'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,8 +33,8 @@ export default function BookCard() {
     <Card className={classes.root}>
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image={Book}
+        title="Book"
       />
       <CardContent>
           <div className="details">
