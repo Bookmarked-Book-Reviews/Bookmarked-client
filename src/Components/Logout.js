@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import {useHistory} from "react-router-dom"
-import {UserContext} from "../App";
+import {UserContext} from "../app";
 
 const Logout = () => {
     // promises
