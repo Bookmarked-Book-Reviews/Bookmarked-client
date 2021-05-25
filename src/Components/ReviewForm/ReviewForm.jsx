@@ -1,5 +1,17 @@
-import { useState } from "react";
+import React ,{ useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 const colors = {
     orange: "#FFBA5A",
@@ -9,7 +21,8 @@ const colors = {
 
 
 
-function Review() {
+function ReviewForm() {
+  const classes = useStyles();
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
@@ -29,7 +42,7 @@ function Review() {
 
   return (
     <div style={styles.container}>
-      <h2> React Ratings </h2>
+      <h2> Review </h2>
       <div style={styles.stars}>
         {stars.map((_, index) => {
           return (
@@ -49,15 +62,18 @@ function Review() {
         })}
       </div>
       <textarea
-        placeholder="What's your experience?"
+        placeholder="Write your review about the Book"
         style={styles.textarea}
       />
 
-      <button
-        style={styles.button}
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        endIcon={<Icon>send</Icon>}
       >
-        Submit
-      </button>
+        Send
+      </Button>
       
     </div>
   );
@@ -68,7 +84,8 @@ const styles = {
   container: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent:"center"
   },
   stars: {
     display: "flex",
@@ -82,16 +99,10 @@ const styles = {
     minHeight: 100,
     width: 300
   },
-  button: {
-    border: "1px solid #a9a9a9",
-    borderRadius: 5,
-    width: 300,
-    padding: 10,
-  }
 
 };
 
 
 
 
-export default Review;
+export default ReviewForm;
