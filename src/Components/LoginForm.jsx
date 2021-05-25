@@ -56,8 +56,8 @@ export default function LoginForm() {
           const {state, dispatch} = useContext(UserContext);
 
           const history = useHistory();
-          const [email, setEmail] = useState('');
-          const [password] = useState('');
+          const {email} = useState('');
+          const {password} = useState('');
 
           const loginUser = async (e) => {
               e.preventDefault();
@@ -103,7 +103,7 @@ export default function LoginForm() {
             fullWidth
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => _setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -119,7 +119,7 @@ export default function LoginForm() {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => _setPassword(e.target.value)}
             autoComplete="current-password"
           />
           <Button
