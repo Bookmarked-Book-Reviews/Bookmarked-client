@@ -6,13 +6,14 @@ import Signup from './Pages/Signup/Signup.jsx';
 import Error from './Pages/Error/Error.jsx'
 import Dashboard from './Pages/Dashboard/Dashboard.jsx';
 import AddBook from './Pages/AddBook/AddBook.jsx';
+import Review from './Pages/Review/Review.jsx';
 import Logout from './Components/Logout';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import { initialState, reducer} from "./Components/reducer/UseReducer";
 
+
   // context API
   export const UserContext = createContext();
-
 const Routing = () => {
     return(
     <div>
@@ -23,23 +24,27 @@ const Routing = () => {
     <Route path="/dashboard" component={Dashboard} />
     <Route path="/create" component={AddBook} />
     <Route path="/logout" component={Logout} />
+    <Route path="/review" component={Review} />
     <Route component={Error} />
     </Switch>
     </div>
+
     )
 }
-const App = () => {
+
+
+export default function App() {
     const [state, dispatch] = useReducer(reducer,initialState)
      
     return (
          
         <UserContext.Provider value={{state, dispatch}}>
 
-        <Navbar/>
+       <Navbar/>
          <Routing/>  
        
         </UserContext.Provider>
     )
     }
 
-    export default App
+
