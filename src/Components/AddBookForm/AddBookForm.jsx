@@ -52,7 +52,9 @@ function AddBookForm() {
         e.preventDefault();
         const {title,isbn,author,language,description,year,genre}=book;
         
-        axios.post(`http://localhost:5000/create`,book,).then(
+        axios.post(`https://book-marked.herokuapp.com/create`,{
+            title,isbn,author,language,description,year,genre
+        },).then(
             (response)=>{
                 console.log(response)
             }
