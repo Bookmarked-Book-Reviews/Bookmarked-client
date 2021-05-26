@@ -26,62 +26,87 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BookCard() {
+export default function BookCard(props) {
   const classes = useStyles();
   const history = useHistory();
+  book=props.data;
 
-  
+  return(
+    
+     book.map((val)=>(
 
-  return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={Book}
-        title="Book"
-      />
-      <CardContent>
-          <div className="details">
-            <Typography variant="body2" color="textSecondary" component="p">
-            NAME : NAME
-            </Typography>
 
-            <Typography variant="body2" color="textSecondary" component="p">
-            AUTHOR : AUTHOR
-            </Typography>
+    <Card className={classes.root} key={val.isbn}>
+          <CardMedia
+            className={classes.media}
+            image={Book}
+            title="Book"
+          />
+          <CardContent>
+            
+              <div className="details">
+                <Typography variant="body2" color="textSecondary" component="p">
+                Title :{val.title} 
+                </Typography>
 
-            <Typography variant="body2" color="textSecondary" component="p">
-            ISBN : ISBN
-            </Typography>
-          </div>
-        <div className="review">
+                <Typography variant="body2" color="textSecondary" component="p">
+                AUTHOR : {val.author} 
+                </Typography>
+
+                <Typography variant="body2" color="textSecondary" component="p">
+                year : {val.year} 
+                </Typography>
+
+                <Typography variant="body2" color="textSecondary" component="p">
+                language : {val.language} 
+                </Typography>
+
+              <Typography variant="body2" color="textSecondary" component="p">
+                genre : {val.genre} 
+                </Typography>
+
+                <Typography variant="subtitle1" color="textSecondary" component="p">
+                Description : {val.description} 
+                </Typography>
+
+
+              </div>
+            <div className="review">
+                <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                endIcon={<RateReviewIcon/>}
+            >
+                Reviews
+            </Button>
+
             <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            endIcon={<RateReviewIcon/>}
-        >
-            Reviews
-        </Button>
-
-        <Button
-            variant="contained"
-            color="default"
-            className={classes.button}
-            endIcon={<LibraryAddIcon/>}
-            onClick={() => history.push('/review')}
-        >
-            Add Review
-        </Button>
-      </div>
-      </CardContent>
+                variant="contained"
+                color="default"
+                className={classes.button}
+                endIcon={<LibraryAddIcon/>}
+                onClick={() => history.push('/review')}
+            >
+                Add Review
+            </Button>
+          </div>
+          </CardContent>
 
 
 
 
-      <CardActions disableSpacing>
+          <CardActions disableSpacing>
+            
+          </CardActions>
+
+          </Card>
+        )
+          
+        )
         
-      </CardActions>
-      
-    </Card>
-  );
+  )
+ 
+  
+  
 }
