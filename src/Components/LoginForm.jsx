@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +11,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory} from "react-router-dom";
+import {UserContext} from "../app";
+
 
 function Copyright() {
   return (
@@ -48,6 +51,39 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginForm() {
   const classes = useStyles();
 
+  
+          const {dispatch} = useContext(UserContext);
+
+          const history = useHistory();
+          const [email, setEmail] = useState('');
+          const [password, setPassword] = useState('');
+
+          const loginUser = async (e) => {
+              e.preventDefault();
+
+              const res = await fetch('/login', {
+                method:"POST",
+                headers:{
+                  "Content-Type" : "application/json"
+                }, 
+                body:JSON.stringify({
+                  email,
+                  password
+                }) 
+          });
+          const data = res.json();
+
+          if(res.status === 400 || !data) {
+            window.alert("Invalid Credentials..!!");
+          } else {
+            dispatch({type: "USER", payload:true })
+            window.alert("Login Successfull");
+            history.push("/dashboard");
+
+          }
+    
+  }
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -58,13 +94,15 @@ export default function LoginForm() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form  method="POST" className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
             id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -79,6 +117,8 @@ export default function LoginForm() {
             label="Password"
             type="password"
             id="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
             autoComplete="current-password"
           />
           <Button
@@ -86,6 +126,7 @@ export default function LoginForm() {
             fullWidth
             variant="contained"
             color="primary"
+            onClick={loginUser}
             className={classes.submit}
           >
             Sign In
