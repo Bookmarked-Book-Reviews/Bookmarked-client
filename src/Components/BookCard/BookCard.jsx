@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BookCard(props) {
   const classes = useStyles();
   const history = useHistory();
-  book=props.data;
+  const book=props.data;
 
   return(
     
