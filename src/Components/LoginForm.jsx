@@ -52,7 +52,7 @@ export default function LoginForm() {
   const classes = useStyles();
 
   
-          const {dispatch} = useContext(UserContext);
+          const { dispatch} = useContext(UserContext);
 
           const history = useHistory();
           const [email, setEmail] = useState('');

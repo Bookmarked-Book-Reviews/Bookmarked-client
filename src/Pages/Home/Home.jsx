@@ -1,5 +1,4 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Navbar from '../../Components/Navbar/Navbar';
 import Book from '../../Assets/images/BookLanding.jpg'
 import './Home.css'
 
@@ -8,7 +7,6 @@ function Home() {
   return (
     <>
     <CssBaseline/>
-     <Navbar/>
      <div className="container">
             <div className="main-text">
                 
