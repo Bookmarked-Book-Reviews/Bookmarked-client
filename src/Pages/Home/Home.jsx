@@ -8,7 +8,6 @@ function Home() {
   return (
     <>
     <CssBaseline/>
-     <Navbar/>
      <div className="container">
             <div className="main-text">
                 
