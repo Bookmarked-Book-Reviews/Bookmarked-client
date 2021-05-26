@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect}from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,7 +16,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {Link} from 'react-router-dom';
 import SearchBar from '../../Components/SearchBar/SearchBar'
 import BookCard from '../../Components/BookCard/BookCard';
-
+import axios from 'axios';
 
 const drawerWidth = 240;
 
@@ -45,6 +45,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  const [book,setBook]=useState([])
+
+  useEffect(()=>{
+    axios.get("https://book-marked.herokuapp.com/books").then((response=>{
+      setBook(response.data)
+    }))
+  },[])
 
   return (
     <div className={classes.root}>
@@ -94,7 +102,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <BookCard/>
+        <BookCard data={book}/>
         
       </main>
     </div>
