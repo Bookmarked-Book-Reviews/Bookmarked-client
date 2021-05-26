@@ -40,7 +40,7 @@ export default function App() {
          
         <UserContext.Provider value={{state, dispatch}}>
 
-       
+       <Navbar/>
          <Routing/>  
        
         </UserContext.Provider>
