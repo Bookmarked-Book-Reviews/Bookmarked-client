@@ -55,9 +55,7 @@ function AddBookForm() {
         axios.post(`https://book-marked.herokuapp.com/create`,{
             title,isbn,author,language,description,year,genre
         },).then(
-            (response)=>{
-                console.log(response)
-            }
+             window.alert("Book Created Successfully")
         )
 
         history.push("/dashboard")
